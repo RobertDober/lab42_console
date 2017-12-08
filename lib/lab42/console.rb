@@ -1,3 +1,4 @@
+require_relative 'console/h'
 require_relative 'console/intrusive'
 require_relative 'console/fn'
 require_relative 'console/kwd'
