@@ -1,7 +1,7 @@
+require_relative 'console/intrusive'
 require_relative 'console/fn'
 require_relative 'console/kwd'
 require_relative 'console/shortcut'
-require_relative 'console/intrusive'
 
 module Lab42
   class Console

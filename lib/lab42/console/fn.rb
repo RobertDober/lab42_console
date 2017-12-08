@@ -1,12 +1,11 @@
+require_relative './tools.rb'
 module Lab42
   class Console
     module Fn
       def fn desc, *args
         case desc
         when Symbol,  String
-          -> (rcv, *a) {
-            rcv.send(desc, *(args + a))
-          }
+          Tools.make_fn_from_ary desc, *args
         else
           raise ArgumentError, "#{desc} does not describe a function"
         end
