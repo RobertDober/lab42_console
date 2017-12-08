@@ -1,5 +1,14 @@
+require_relative 'console/fn'
+require_relative 'console/kwd'
+require_relative 'console/shortcut'
+require_relative 'console/intrusive'
+
 module Lab42
-  class Console 
-    
+  class Console
+    def kwd; Kwd end
   end
+end
+
+class Object
+  include Lab42::Console::Shortcut
 end
