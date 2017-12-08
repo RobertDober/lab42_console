@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry', '~> 0.11'
   s.add_development_dependency 'pry-byebug', '~> 3.5'
   s.add_development_dependency 'rspec', '~> 3.7'
+
+  s.add_development_dependency 'rake', '~> 12.3'
   s.add_development_dependency 'travis-lint', '~> 2.0'
   # s.add_development_dependency 'rake', '~> 10.3'
 end

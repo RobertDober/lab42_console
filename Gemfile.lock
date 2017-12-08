@@ -19,6 +19,7 @@ GEM
     pry-byebug (3.5.1)
       byebug (~> 9.1)
       pry (~> 0.10)
+    rake (12.3.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -42,6 +43,7 @@ DEPENDENCIES
   lab42_console!
   pry (~> 0.11)
   pry-byebug (~> 3.5)
+  rake (~> 12.3)
   rspec (~> 3.7)
   travis-lint (~> 2.0)
 
