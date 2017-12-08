@@ -6,6 +6,21 @@ class Object
 end
 
 module Enumerable
+  
+  def f *args, &blk
+    blk = Lab42::Console::Tools.make_fn(args, blk)
+    Enumerator::Lazy.new(self) do | yielder, element |
+      yielder << element if blk.(element) 
+    end
+  end
+
+  def f! *args, &blk
+    blk = Lab42::Console::Tools.make_fn(args, blk)
+    Enumerator::Lazy.new(self) do | yielder, element |
+      yielder << element unless blk.(element) 
+    end
+  end
+
   def m *args, &blk
     blk = Lab42::Console::Tools.make_fn(args, blk)
     Enumerator::Lazy.new(self) do | yielder, element |
@@ -26,5 +41,8 @@ module Enumerable
 end
 
 class Enumerator::Lazy
-  alias_method :f, :force
+  def f *a, &blk
+    return force if a.empty? && blk.nil?
+    super
+  end
 end

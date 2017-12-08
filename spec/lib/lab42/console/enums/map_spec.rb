@@ -1,9 +1,9 @@
 RSpec.describe C do
   describe 'enum' do
 
-    describe 'map behaves as necessary, and is shorter too: m' do
+    context 'map behaves as necessary, and is shorter too: m' do
 
-      describe 'on arys' do
+      context 'on arys' do
         it 'does not bother with empty' do
           expect( [].m ).to be_kind_of(Enumerator::Lazy)
           expect( [].m.f ).to be_empty
@@ -25,14 +25,14 @@ RSpec.describe C do
 
     end
 
-    describe 'on hashes' do
+    context 'on hashes' do
       let( :values ){ {a: 42, b: 43, c: 44} }
       it{ expect( values.m ).to be_kind_of(Enumerator::Lazy) }
       it{ expect( values.m{|x,y| [y,x]}.f ).to eq([[42, :a], [43, :b], [44, :c]]) }
       it{ expect( values.fm{|x,y| [y,x]}.f ).to eq([42, :a, 43, :b, 44, :c]) }
     end
 
-    describe 'on ranges' do
+    context 'on ranges' do
       let( :digits ){ 0..9 }
 
       it{ expect( digits.m ).to be_kind_of(Enumerator::Lazy) }
