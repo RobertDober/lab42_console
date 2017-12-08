@@ -13,7 +13,9 @@ RSpec.describe C do
         it { expect( c.kwd.last_value(unique, :a) ).to eq(42) }
         it { expect( c.kwd.last_value(duplic, :a) ).to eq(44) }
         it { expect( c.kwd.values(unique, :a) ).to eq([42]) }
+        it { expect( c.kwd.values(unique, :a, :c) ).to eq([42, 44]) }
         it { expect( c.kwd.values(duplic, :a) ).to eq([42, 44]) }
+        it { expect( c.kwd.values(duplic, :a, :b) ).to eq([42, 43, 44]) }
         it { expect( c.kwd.count(unique, :a) ).to eq(1) }
         it { expect( c.kwd.count(duplic, :a) ).to eq(2) }
       end
@@ -43,7 +45,6 @@ RSpec.describe C do
       describe 'arguments' do
         it 'needs one or two' do
           expect{ c.kwd.values() }.to raise_error(ArgumentError)
-          expect{ c.kwd.values(unique, :a, :b) }.to raise_error(ArgumentError)
         end
       end
     end

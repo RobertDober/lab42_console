@@ -1,17 +1,13 @@
+require_relative 'tools/forward_to_new_instance'
+
 module Lab42
   class Console
     class Kwd
       attr_reader :kwds
-      
-      class << self
-        def method_missing name, kwds, *args
-          insm = instance_method(name)
-          insm.bind(new(kwds)).(*args)
-        rescue NameError
-          super
-        end
-      end
 
+      
+      extend Tools::ForwardToNewInstance
+      
       def count key
         kwds.count{ |pairs| key  == pairs.keys.first }
       end
@@ -38,14 +34,14 @@ module Lab42
       end
 
       def values *keys
-        raise ArgumentError, "need 0, 1, got #{keys.size}" unless keys.size < 2
-        key = keys.first
-        if key
-          kwds.map{ |pairs| pairs.keys.first == key && pairs.values.first }.select(&:identity)
-        else
+        keys = keys.flatten
+        if keys.empty?
           kwds.map{ |pairs| pairs.values.first }
+        else
+          kwds.map{ |pairs| keys.include?(pairs.keys.first) && pairs.values.first }.select(&:identity)
         end
       end
+
 
       private
 
