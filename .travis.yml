@@ -7,8 +7,8 @@ rvm:
   - "2.3.0"
   - "2.4.0"
 
-# install: 
-#   - bundle install
-# script: 
-#   - bundle exec rspec spec
+install: 
+  - bundle install
+script: 
+  - bundle exec rspec spec
 # # - CODECLIMATE_REPO_TOKEN=${CODECLIMATE_LAB42CORE_TOKEN} bundle exec codeclimate-test-reporter
