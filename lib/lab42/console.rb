@@ -7,6 +7,7 @@ require_relative 'console/shortcut'
 module Lab42
   class Console
     def kwd; Kwd end
+    def h; H end
   end
 end
 

@@ -13,7 +13,7 @@ RSpec.describe C do
 
 
     xit 'finds nodes' do
-      expect( c.h.find(tree, :a) ).to eq([42, 1])
+      # expect( c.h.find(tree, :a) ).to eq([42, 1])
       expect( c.h.new(tree).find(:a) ).to  eq([42, 1])
     end
 
