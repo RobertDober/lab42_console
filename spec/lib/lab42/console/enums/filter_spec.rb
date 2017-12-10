@@ -3,7 +3,7 @@ RSpec.describe C do
     
     context 'filter' do 
 
-      context 'on arys' do 
+      context 'on ranges' do 
         
         it "non regression w/o params it's just force" do
           expect( (1..3).lazy.f ).to eq([*1..3])
