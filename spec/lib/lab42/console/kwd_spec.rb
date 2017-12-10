@@ -34,6 +34,7 @@ RSpec.describe C do
         it { expect( kwd.last_value(:a) ).to eq(42)  }
         it { expect( kwd.values(:a) ).to eq([42])  }
         it { expect( kwd.count(:a) ).to eq(1)  }
+        it { expect( kwd.count(:a, :b) ).to eq(2)  }
         it { expect( kw2.first_value(:a) ).to eq(42)  }
         it { expect( kw2.last_value(:a) ).to eq(44)  }
         it { expect( kw2.values(:a) ).to eq([42, 44])  }
@@ -43,7 +44,7 @@ RSpec.describe C do
       end
 
       describe 'arguments' do
-        it 'needs one or two' do
+        it 'needs one' do
           expect{ c.kwd.values() }.to raise_error(ArgumentError)
         end
       end

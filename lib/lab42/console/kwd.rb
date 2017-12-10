@@ -3,13 +3,16 @@ require_relative 'tools/forward_to_new_instance'
 module Lab42
   class Console
     class Kwd
-      attr_reader :kwds
+      extend Tools::ForwardToNewInstance
 
+      attr_reader :kwds
       
       extend Tools::ForwardToNewInstance
       
-      def count key
-        kwds.count{ |pairs| key  == pairs.keys.first }
+      
+      
+      def count *keys
+        kwds.count{ |pairs| keys.include? pairs.keys.first }
       end
 
 
@@ -34,7 +37,6 @@ module Lab42
       end
 
       def values *keys
-        keys = keys.flatten
         if keys.empty?
           kwds.map{ |pairs| pairs.values.first }
         else
