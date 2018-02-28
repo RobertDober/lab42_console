@@ -6,8 +6,11 @@ module Lab42
       extend Tools::ForwardToNewInstance
 
       attr_reader :kwds
-      
-      
+
+      extend Tools::ForwardToNewInstance
+
+
+
       def count *keys
         kwds.count{ |pairs| keys.include? pairs.keys.first }
       end
@@ -44,7 +47,7 @@ module Lab42
 
       private
 
-      def initialize kwds 
+      def initialize kwds
         @kwds = kwds
       end
     end

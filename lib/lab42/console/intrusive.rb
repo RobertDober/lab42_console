@@ -5,6 +5,12 @@ require_relative './tools'
 
 class Object
   def identity; self end
+
+  def dup!
+    dup
+  rescue TypeError
+    self
+  end
 end
 
 module Enumerable
@@ -39,5 +45,11 @@ module Enumerable
       end
     end
 
+  end
+end
+
+class Hash
+  def dup_key key
+    dup.merge( key => self[key].dup! )
   end
 end

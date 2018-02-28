@@ -22,7 +22,7 @@ $: << File.join(PROJECT_ROOT, 'lib')
 require 'lab42/console'
 C = Lab42::Console
 
-Dir[File.join(PROJECT_ROOT,"spec/support/**/*.rb")].each {|f| require fh }
+Dir[File.join(PROJECT_ROOT,"spec/support/**/*.rb")].each {|f| puts "require #{f}"; require f }
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

@@ -1,10 +1,10 @@
 RSpec.describe C do
   describe 'enum' do
-    
-    context 'filter' do 
 
-      context 'on arys' do 
-        
+    context 'filter' do
+
+      context 'on ranges' do
+
         it "non regression w/o params it's a Lab42::Lazy " do
           expect( (1..3).lazy.f ).to be_kind_of(Lab42::Lazy)
         end
@@ -26,7 +26,7 @@ RSpec.describe C do
         end
 
       end
-      
+
     end
   end
 end

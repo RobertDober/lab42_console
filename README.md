@@ -12,10 +12,10 @@ Intrusive Ruby Tools for the Console Only
 
 ## Usage
 
-```ruby
+```ruby no-literate
   require 'lab42/console'
 
   # gives access to the new console object c
 
-  c.version # => 0.0.0
+  c.version # => 0.1.0
 ```
