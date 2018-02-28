@@ -5,8 +5,11 @@ RSpec.describe C do
 
       context 'on arys' do 
         
-        it "non regression w/o params it's just force" do
-          expect( (1..3).lazy.f ).to eq([*1..3])
+        it "non regression w/o params it's a Lab42::Lazy " do
+          expect( (1..3).lazy.f ).to be_kind_of(Lab42::Lazy)
+        end
+        it "... which shows as it's forced result" do
+          expect( (1..3).lazy.f.inspect ).to eq([*1..3])
         end
 
         it "but with params it filters" do

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lab42_console (0.0.0)
+    lab42_console (0.0.2)
       forwarder2 (~> 0.2)
       lab42_function (~> 0.1)
 

@@ -21,6 +21,12 @@ RSpec.describe C do
         it 'we can use m whenever it suits us' do
           expect( %w{a b}.m.m(:+, 'x').m.f ).to eq(%w{ax bx})
         end
+
+        it 'is all lazy' do
+          expect( %w{a b}.m(:+, 'x') ).to be_kind_of(Enumerator::Lazy)
+          expect( %w{a b}.m(:+, 'x').m(:+, 'y') ).to be_kind_of(Enumerator::Lazy)
+          expect( %w{a b}.m(:+, 'x').m(:+, 'y').f ).to eq(%w{axy bxy})
+        end
       end
 
     end
