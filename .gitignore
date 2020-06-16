@@ -29,6 +29,7 @@ build-iPhoneSimulator/
 #
 # vendor/Pods/
 
+*.rb.deprecated
 ## Documentation cache and generated files:
 /.yardoc/
 /_yardoc/

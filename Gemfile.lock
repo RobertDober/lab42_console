@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lab42_console (0.1.0)
+    lab42_console (0.2.0)
       forwarder2 (~> 0.2)
 
 GEM

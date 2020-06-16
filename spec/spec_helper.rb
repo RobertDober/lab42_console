@@ -18,9 +18,7 @@ require 'simplecov'
 SimpleCov.start
 
 PROJECT_ROOT = File.expand_path "../..", __FILE__
-$: << File.join(PROJECT_ROOT, 'lib')
-require 'lab42/console'
-C = Lab42::Console
+require_relative '../lib/lab42/console'
 
 # Dir[File.join(PROJECT_ROOT,"spec/support/**/*.rb")].each {|f| puts "require #{f}"; require f }
 
