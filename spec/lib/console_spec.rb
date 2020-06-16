@@ -1,4 +1,4 @@
 RSpec.describe C do
 
-   doctest 'README.md'
+   # doctest 'README.md'
 end
