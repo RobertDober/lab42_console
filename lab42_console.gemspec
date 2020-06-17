@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   # s.add_development_dependency 'pry', '~> 0.11'
   s.add_development_dependency 'pry-byebug', '~> 3.9'
+  s.add_development_dependency 'pry-doc', '~> 1.1.0'
   s.add_development_dependency 'rspec', '~> 3.9'
   s.add_development_dependency 'simplecov', '~> 0.15'
 

@@ -3,16 +3,22 @@ RSpec.describe Enumerable do
 
   describe "simple comparer" do
     it "finds something" do
-      expect( data.fnd(1) ).to eq(OpenStruct.new(id: 1, name: "1"))
+      expect( data.by(:id).fnd(1) ).to eq(OpenStruct.new(id: 1, name: "1"))
     end
     it "finds nothing" do
-      expect( data.fnd(11) ).to be_nil
+      expect( data.by(:id).fnd(11) ).to be_nil
+    end
+    it "tolerates method missing" do
+      expect( data.by(:xxx).fnd(11) ).to be_nil
     end
     it "selects something" do
-      expect( data.sel(1) ).to eq([OpenStruct.new(id: 1, name: "1"), OpenStruct.new(id: 1, name: "11")])
+      expect( data.by(:id).sel(1) ).to eq([OpenStruct.new(id: 1, name: "1"), OpenStruct.new(id: 1, name: "11")])
     end
     it "selects nothing" do
-      expect( data.sel(11) ).to be_empty
+      expect( data.by(:id).sel(11) ).to be_empty
+    end
+    it "method missing is falsy" do
+      expect( data.by(:xxx).sel(11) ).to be_empty
     end
   end
 

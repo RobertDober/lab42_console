@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lab42_console (0.2.0)
+    lab42_console (0.2.1)
       forwarder2 (~> 0.2)
 
 GEM
@@ -22,6 +22,9 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
+    pry-doc (1.1.0)
+      pry (~> 0.11)
+      yard (~> 0.9.11)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -41,6 +44,7 @@ GEM
     simplecov-html (0.12.2)
     travis-lint (2.0.0)
       json
+    yard (0.9.25)
 
 PLATFORMS
   ruby
@@ -49,6 +53,7 @@ DEPENDENCIES
   codeclimate-test-reporter (~> 1.0)
   lab42_console!
   pry-byebug (~> 3.9)
+  pry-doc (~> 1.1.0)
   rspec (~> 3.9)
   simplecov (~> 0.15)
   travis-lint (~> 2.0)
