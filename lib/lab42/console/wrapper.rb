@@ -5,7 +5,7 @@ module Lab42
 
       attr_reader :function, :subject
 
-      def add(*args, &blk)
+      def by(*args, &blk)
         @function = function.add(*args, &blk)
         self
       end

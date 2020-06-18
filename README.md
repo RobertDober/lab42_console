@@ -10,12 +10,55 @@
 
 Intrusive Ruby Tools for the Console Only
 
-## Usage
+## Applying operations to collections
 
-```ruby no-literate
-  require 'lab42/console'
+By using `by` we create what one could call a _compaignon_ collection which can be transformed, at the end
+we can use finders and filters on these compagnon collection to access the original data
 
-  # gives access to the new console object c
+Let us for example suppose that we have the following data
 
-  c.version # => 0.1.0
+```ruby :include
+    let(:data) {
+      (0..9).map{ |n|
+        OpenStruct.new(id: n, name: "name #{n}", content: (0..n).map{ |k| "data #{k}" })
+      }
+    }
+
 ```
+Now we can filter the **original** data by selecting on some transformations on the compagnon collection, firstly we create a compagnon collection which
+contains only the names:
+
+```ruby :include
+  let(:compagnon){ data.by(:name) }
+```
+
+Now we can access the original for example as follows
+
+```ruby :example Find original by means of a compagnon
+    expect(compagnon.fnd("name 1")).to eq(data[1])
+```
+
+We can chain `by` as much as we want
+
+```ruby :include
+    let(:children_count) { data.by(:content).by(:size) }
+```
+
+And select on children count
+
+```ruby :example Select by count of children
+    expect(children_count.sel(:>, 8)).to eq(data[8..9]) 
+```
+
+
+## Author
+
+Copyright © 2019,20 Robert Dober
+mailto: robert.dober@gmail.com
+
+# LICENSE
+
+Same as Elixir -- ;) --, which is Apache License v2.0. Please refer to [LICENSE](LICENSE) for details.
+
+SPDX-License-Identifier: Apache-2.0
+

@@ -14,11 +14,12 @@
 #
 # sEE http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
+require "speculate_about"
 PROJECT_ROOT = File.expand_path "../..", __FILE__
-require_relative '../lib/lab42/console'
+require_relative "../lib/lab42/console"
 
 # Dir[File.join(PROJECT_ROOT,"spec/support/**/*.rb")].each {|f| puts "require #{f}"; require f }
 
