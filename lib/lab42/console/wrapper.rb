@@ -21,7 +21,7 @@ module Lab42
         filter_function = _make_function(*args, &blk)
         _apply_function
           .filter{ |x| x.apply_to_cdr(filter_function)&.cdr }
-          .map(&:car)
+          .cars
       end
 
 
@@ -47,7 +47,7 @@ module Lab42
         when Symbol
           Function.new(*args, &blk)
         when NilClass
-          Function.new([], &blk)
+          Function.new(&blk)
         else
           Function.new(*([:==]+args), &blk)
         end
