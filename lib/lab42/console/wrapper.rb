@@ -5,21 +5,23 @@ module Lab42
 
       attr_reader :function, :subject
 
-      def fnd(*args)
-        @method = :find
-        @filter = _make_filter(*args)
-        run
+      def add(*args, &blk)
+        @function = function.add(*args, &blk)
+        self
       end
 
-      def run
-        subject
-          .send(method, &filter)
+
+      def fnd(*args, &blk)
+        _apply_function
+          .find{ |x| x.apply_to_cdr(_make_function(*args, &blk))&.cdr }
+          &.car
       end
 
-      def sel(*args)
-        @method = :filter
-        @filter = _make_filter(*args)
-        run
+      def sel(*args, &blk)
+        filter_function = _make_function(*args, &blk)
+        _apply_function
+          .filter{ |x| x.apply_to_cdr(filter_function)&.cdr }
+          .map(&:car)
       end
 
 
@@ -30,8 +32,25 @@ module Lab42
         @subject = subject
       end
 
+      def _apply_function
+        subject
+          .duplicate
+          .map{ |x| x.apply_to_cdr(function) }
+      end
+
       def _init_function(args, blk)
-        @function = Function.new(*args, blk) 
+        @function = Function.new(*args, &blk) 
+      end
+
+      def _make_function(*args, &blk)
+        case args.first
+        when Symbol
+          Function.new(*args, &blk)
+        when NilClass
+          Function.new([], &blk)
+        else
+          Function.new(*([:==]+args), &blk)
+        end
       end
     end
   end

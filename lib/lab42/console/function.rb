@@ -3,7 +3,7 @@ module Lab42
     class Function
       Error = Class.new RuntimeError
 
-      attr_reader :functions
+      attr_reader :functions, :sources
 
       def add(*args, &blk)
         if args.empty?
@@ -30,6 +30,7 @@ module Lab42
 
       def initialize(*args, &blk)
         @functions = []
+        @sources   = []
         add(*args, &blk)
       end
 
@@ -38,6 +39,7 @@ module Lab42
       end
 
       def _add_args_fn(args)
+        sources << "send #{args.join(", ")}"
         -> reciever do
           reciever.send(*args)
         rescue
@@ -46,6 +48,7 @@ module Lab42
       end
 
       def _add_blk(blk)
+        sources << blk.to_s
         functions << blk
       end
 
